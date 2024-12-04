@@ -1,3 +1,4 @@
+import { ActiveStatus } from 'src/common/interfaces';
 import { Order } from 'src/orders/entities/order.entity';
 import {
 	Entity,
@@ -7,11 +8,6 @@ import {
 	UpdateDateColumn,
 	OneToMany,
 } from 'typeorm';
-
-export enum ActiveStatus {
-	active = 'active',
-	inactive = 'inactive',
-}
 
 @Entity('customers')
 export class Customer {
