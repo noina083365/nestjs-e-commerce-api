@@ -34,10 +34,10 @@ export class CreateUserDto {
   @IsEmail()
   email: string;
 
-  @ApiProperty({ example: 'WEB001!', description: 'Password' })
+  @ApiProperty({ example: 'Passw@rd01!', description: 'Password' })
   password: string;
 
-  @ApiProperty({ enum: ['Member', 'Moderator', 'Admin'] })
+  @ApiProperty({ enum: ['Store', 'Admin'] })
   role: UserRole;
 
   @ApiProperty({ description: 'Created date' })
