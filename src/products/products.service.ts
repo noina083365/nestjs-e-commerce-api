@@ -12,8 +12,16 @@ export class ProductsService {
 		private readonly productRepository: Repository<Product>,
 	) { }
 
-	create(createProductDto: CreateProductDto) {
-		return 'This action adds a new product';
+	async create(createProductDto: CreateProductDto) {
+		try {
+			const user = await this.productRepository.findOne({ where: { name: createProductDto.name } });
+			if (user) {
+				throw new HttpException('This name already exists.', 400);
+			}
+			return this.productRepository.save(createProductDto);
+		} catch (error) {
+			throw new HttpException(error.message || 'Internal Server Error.', error.status || 500);
+		}
 	}
 
 	findAll() {
