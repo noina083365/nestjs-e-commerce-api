@@ -1,3 +1,4 @@
+import { Cart } from 'src/carts/entities/cart.entity';
 import { Customer } from 'src/customers/entities/customer.entity';
 import { Order } from 'src/orders/entities/order.entity';
 import { Product } from 'src/products/entities/product.entity';
@@ -11,8 +12,8 @@ import {
 	UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('carts')
-export class Cart {
+@Entity('cart_items')
+export class CartItem {
 	@PrimaryGeneratedColumn()
 	cart_item_id: number;
 
