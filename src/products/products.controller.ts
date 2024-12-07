@@ -17,6 +17,11 @@ export class ProductsController {
 		return this.productsService.findAll();
 	}
 
+	@Get('available')
+	findAllInStock() {
+		return this.productsService.findAllInStock();
+	}
+
 	@Get(':id')
 	findOne(@Param('id') id: string) {
 		return this.productsService.findOne(+id);

@@ -3,7 +3,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
-import { Repository } from 'typeorm';
+import { MoreThan, Repository } from 'typeorm';
 
 @Injectable()
 export class ProductsService {
@@ -24,6 +24,16 @@ export class ProductsService {
 		}
 	}
 
+	findAllInStock() {
+		try {
+			return this.productRepository.find({
+				where: { stock: MoreThan(0) }
+			});
+		} catch (error) {
+			throw new HttpException(error.message || 'Internal Server Error.', error.status || 500);
+		}
+	}
+
 	findAll() {
 		try {
 			return this.productRepository.find();
@@ -33,7 +43,11 @@ export class ProductsService {
 	}
 
 	findOne(id: number) {
-		return `This action returns a #${id} product`;
+		try {
+			return this.productRepository.findOneBy({ id });
+		} catch (error) {
+			throw new HttpException(error.message || 'Internal Server Error.', error.status || 500);
+		}
 	}
 
 	update(id: number, updateProductDto: UpdateProductDto) {
