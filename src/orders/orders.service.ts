@@ -18,7 +18,11 @@ export class OrdersService {
 		private readonly productRepository: Repository<Product>,
 	) { }
 
-	// Look like cart ??
+	// TODO: Remove later
+	create(createOrderDto: CreateOrderDto) {
+		return `This action returns a new order`;
+	}
+
 	async addProductToOrder(orderId: number, productId: number): Promise<OrderItem> {
 		const order = await this.orderRepository.findOne({
 			where: { id: orderId },
