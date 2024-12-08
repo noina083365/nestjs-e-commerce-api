@@ -6,7 +6,7 @@ import {
   Length,
   Matches,
 } from 'class-validator';
-import { UserRole } from 'src/common/interfaces';
+import { UserRole } from '../../common/interfaces';
 
 export class CreateUserDto {
   @ApiProperty({ example: 'user_product', description: 'Username of the user' })

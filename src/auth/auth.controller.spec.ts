@@ -17,8 +17,8 @@ describe('Auth Controller', () => {
         {
           provide: AuthService,
           useValue: {
-            login: jest.fn().mockResolvedValue({ msg: 'Login successfully.' }),
-            register: jest
+            customerLogin: jest.fn().mockResolvedValue({ msg: 'Login successfully.' }),
+            customerRegister: jest
               .fn()
               .mockResolvedValue({ msg: 'Register successfully.' }),
           },

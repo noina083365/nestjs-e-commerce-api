@@ -6,7 +6,7 @@ import {
 	Length,
 	Matches,
 } from 'class-validator';
-import { ActiveStatus } from 'src/common/interfaces';
+import { ActiveStatus } from '../../common/interfaces';
 
 export class CreateCustomerDto {
 	@ApiProperty({ example: 'user_ecom', description: 'Username of the user' })

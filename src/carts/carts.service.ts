@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Cart } from './entities/cart.entity';
-import { Repository } from 'typeorm';
+// import { InjectRepository } from '@nestjs/typeorm';
+// import { Cart } from './entities/cart.entity';
+// import { Repository } from 'typeorm';
 
 @Injectable()
 export class CartsService {
-	constructor(
-		@InjectRepository(Cart)
-		private readonly cartRepository: Repository<Cart>,
-	) { }
+	// constructor(
+	// 	@InjectRepository(Cart)
+	// 	private readonly cartRepository: Repository<Cart>,
+	// ) { }
 
 	// async create(createCartDto: CreateCartDto): Promise<Cart> {
 	// 	const order = await this.cartRepository.findOne({

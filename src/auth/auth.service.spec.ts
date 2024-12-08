@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
-import { RegisterDto } from './dto/customer-register.dto';
+import { CustomerRegisterDto } from './dto/customer-register.dto';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
-import { User } from '../users/entities/user.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
-import { UsersService } from '../users/users.service';
+import { CustomersService } from '../customers/customers.service';
+import { Customer } from '../customers/entities/customer.entity';
 
 const mockUserRepository = () => ({
   find: jest.fn(),
@@ -16,15 +16,15 @@ const mockUserRepository = () => ({
 });
 
 const mockUser = {
-  username: 'wbusermember',
+  username: 'wbusercustshop',
   password: 'Passw0rd001',
 };
 
 describe('AuthService', () => {
   let authService: AuthService;
-  let userService: UsersService;
+  let customersService: CustomersService;
   let jwtService: JwtService;
-  let userRepository: Repository<User>;
+  let customerRepository: Repository<Customer>;
   const expectedResponse = {
     accessToken: 'kanokpit-dev-nestjs-e-commerce',
   };
@@ -34,10 +34,10 @@ describe('AuthService', () => {
       providers: [
         AuthService,
         {
-          provide: getRepositoryToken(User),
+          provide: getRepositoryToken(Customer),
           useFactory: mockUserRepository,
         },
-        UsersService,
+        CustomersService,
         {
           provide: JwtService,
           useValue: {
@@ -48,16 +48,16 @@ describe('AuthService', () => {
     }).compile();
 
     authService = module.get<AuthService>(AuthService);
-    userService = module.get<UsersService>(UsersService);
+    customersService = module.get<CustomersService>(CustomersService);
     jwtService = module.get<JwtService>(JwtService);
-    userRepository = module.get<Repository<User>>(getRepositoryToken(User));
+    customerRepository = module.get<Repository<Customer>>(getRepositoryToken(Customer));
   });
 
   describe('auth', () => {
     it('should login and return an access token', async () => {
       const spyFindOneUser = jest
-        .spyOn(userRepository, 'findOne')
-        .mockResolvedValue(mockUser as User);
+        .spyOn(customerRepository, 'findOne')
+        .mockResolvedValue(mockUser as Customer);
 
       const spyCompare = jest
         .spyOn(bcrypt, 'compare')
@@ -67,7 +67,7 @@ describe('AuthService', () => {
         .spyOn(jwtService, 'signAsync')
         .mockResolvedValue('accessToken');
 
-      await authService.login(mockUser);
+      await authService.customerLogin(mockUser);
       expect(spyFindOneUser).toHaveBeenCalledWith({
         where: { username: mockUser.username },
       });
@@ -75,11 +75,11 @@ describe('AuthService', () => {
       expect(spySignAsync).toHaveBeenCalled();
     });
     it('should register', async () => {
-      const registerDtoDto: RegisterDto = {
+      const registerDtoDto: CustomerRegisterDto = {
         username: 'testusername',
         password: 'Passw0rd001',
       };
-      const msg = await authService.register(registerDtoDto);
+      const msg = await authService.customerRegister(registerDtoDto);
       expect(msg).not.toBeNull();
     });
   });
