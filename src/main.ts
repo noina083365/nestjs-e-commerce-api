@@ -10,12 +10,12 @@ async function bootstrap() {
 	app.setGlobalPrefix('api');
 
 	const options = new DocumentBuilder()
-		.setTitle('NestJS Webboard API')
-		.setDescription(`Webboard's api created by NestJS`)
+		.setTitle('NestJS E-Commerce API')
+		.setDescription(`E-Commerce's api created by NestJS`)
 		.setVersion('1.0')
 		.addServer('http://localhost:4554/', 'Local environment')
 		.addServer('https://54.255.239.151:4554/', 'Production')
-		.addTag('Webboard')
+		.addTag('ECommerce')
 		.build();
 	const document = SwaggerModule.createDocument(app, options);
 	SwaggerModule.setup('/', app, document);

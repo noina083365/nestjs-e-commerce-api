@@ -11,6 +11,7 @@ import { AppService } from './app.service';
 import { OrderItemModule } from './order-item/order-item.module';
 import { CartsModule } from './carts/carts.module';
 import { CartItemModule } from './cart-item/cart-item.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
 	imports: [
@@ -37,6 +38,7 @@ import { CartItemModule } from './cart-item/cart-item.module';
 		OrderItemModule,
 		CartsModule,
 		CartItemModule,
+		AuthModule
 	],
 	controllers: [AppController],
 	providers: [AppService],
