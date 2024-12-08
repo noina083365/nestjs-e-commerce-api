@@ -9,7 +9,7 @@ import {
 export class CustomerRegisterDto {
   @ApiProperty({ example: 'uswshopping', description: 'Username' })
   @Length(4, 20)
-  @Matches(/^[a-zA-Z0-9_]*$/, {
+  @Matches(/^[a-zA-Z0-9_@.]*$/, {
     message: 'Username can only contain letters, numbers, and underscores',
   })
   username: string;
