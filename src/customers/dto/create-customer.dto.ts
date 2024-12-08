@@ -10,7 +10,7 @@ import { ActiveStatus } from '../../common/interfaces';
 
 export class CreateCustomerDto {
 	@ApiProperty({ example: 'user_ecom', description: 'Username of the user' })
-	@Length(4, 20)
+	@Length(7, 50)
 	@Matches(/^[a-zA-Z0-9_@.]*$/, {
 		message: 'Username can only contain letters, numbers, and underscores',
 	})
