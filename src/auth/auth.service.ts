@@ -5,7 +5,7 @@ import { CustomerRegisterDto } from './dto/customer-register.dto';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { Customer } from 'src/customers/entities/customer.entity';
+import { Customer } from '../customers/entities/customer.entity';
 
 const jwtSecret = 'nest-next-e-commerce-2024';
 

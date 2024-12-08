@@ -1,14 +1,10 @@
-import { Customer } from 'src/customers/entities/customer.entity';
-import { Order } from 'src/orders/entities/order.entity';
-import { Product } from 'src/products/entities/product.entity';
+import { Order } from '../../orders/entities/order.entity';
+import { Product } from '../../products/entities/product.entity';
 import {
 	Column,
-	CreateDateColumn,
 	Entity,
 	ManyToOne,
-	OneToMany,
 	PrimaryGeneratedColumn,
-	UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('order_items')

@@ -6,8 +6,8 @@ import {
   IsOptional,
   IsPositive,
 } from 'class-validator';
-import { OrderStatus } from 'src/common/interfaces';
-import { CreateOrderItemDto } from 'src/order-item/dto/create-order-item.dto';
+import { OrderStatus } from '../../common/interfaces';
+import { CreateOrderItemDto } from '../../order-item/dto/create-order-item.dto';
 
 export class CreateOrderDto {
   @ApiProperty({ enum: ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'] })

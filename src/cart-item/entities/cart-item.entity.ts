@@ -1,15 +1,11 @@
-import { Cart } from 'src/carts/entities/cart.entity';
-import { Customer } from 'src/customers/entities/customer.entity';
-import { Order } from 'src/orders/entities/order.entity';
-import { Product } from 'src/products/entities/product.entity';
+import { Cart } from '../../carts/entities/cart.entity';
+import { Product } from '../../products/entities/product.entity';
 import {
 	Column,
 	CreateDateColumn,
 	Entity,
 	ManyToOne,
-	OneToMany,
 	PrimaryGeneratedColumn,
-	UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('cart_items')

@@ -1,6 +1,4 @@
-import { Customer } from 'src/customers/entities/customer.entity';
-import { Order } from 'src/orders/entities/order.entity';
-import { Product } from 'src/products/entities/product.entity';
+import { Customer } from '../../customers/entities/customer.entity';
 import {
 	Column,
 	CreateDateColumn,

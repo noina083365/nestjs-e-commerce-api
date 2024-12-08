@@ -1,4 +1,4 @@
-import { UserRole } from 'src/common/interfaces';
+import { UserRole } from '../../common/interfaces';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()

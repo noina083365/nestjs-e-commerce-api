@@ -1,5 +1,5 @@
-import { ActiveStatus } from 'src/common/interfaces';
-import { Order } from 'src/orders/entities/order.entity';
+import { ActiveStatus } from '../../common/interfaces';
+import { Order } from '../../orders/entities/order.entity';
 import {
 	Entity,
 	Column,
