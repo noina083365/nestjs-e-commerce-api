@@ -29,6 +29,14 @@ describe('OrdersController', () => {
 					provide: getRepositoryToken(Order),
 					useFactory: mockRepository,
 				},
+				{
+					provide: getRepositoryToken(Product),
+					useFactory: mockRepository,
+				},
+				{
+					provide: getRepositoryToken(OrderItem),
+					useFactory: mockRepository,
+				},
 			],
 		}).compile();
 

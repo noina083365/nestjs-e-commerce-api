@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { OrdersService } from './orders.service';
 import { Order } from './entities/order.entity';
-import { OrderItem } from '../order-item/entities/order-item.entity';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { OrderItem } from '../order-item/entities/order-item.entity';
 import { Product } from '../products/entities/product.entity';
 
 const mockRepository = () => ({
@@ -25,6 +25,14 @@ describe('OrdersService', () => {
 				OrdersService,
 				{
 					provide: getRepositoryToken(Order),
+					useFactory: mockRepository,
+				},
+				{
+					provide: getRepositoryToken(Product),
+					useFactory: mockRepository,
+				},
+				{
+					provide: getRepositoryToken(OrderItem),
 					useFactory: mockRepository,
 				},
 			],
