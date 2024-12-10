@@ -1,16 +1,28 @@
 import { Injectable } from '@nestjs/common';
-// import { InjectRepository } from '@nestjs/typeorm';
-// import { Cart } from './entities/cart.entity';
-// import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Cart } from './entities/cart.entity';
+import { Repository } from 'typeorm';
+import { CreateCartDto } from './dto/create-cart.dto';
 
 @Injectable()
 export class CartsService {
-	// constructor(
-	// 	@InjectRepository(Cart)
-	// 	private readonly cartRepository: Repository<Cart>,
-	// ) { }
+	constructor(
+		@InjectRepository(Cart)
+		private readonly cartRepository: Repository<Cart>,
+	) { }
 
-	// async create(createCartDto: CreateCartDto): Promise<Cart> {
+	// TODO: Store to DB
+	// Which cart id?
+		// find by customer_id that status is open
+			// true: found
+				// select exist cart id
+			// false: not found
+				// create new cart and get id
+
+			// store in the cart
+			// store in the cart item
+
+	async create(createCartDto: CreateCartDto) {
 	// 	const order = await this.cartRepository.findOne({
 	// 		where: { id: orderId },
 	// 		relations: ['products'],
@@ -32,5 +44,5 @@ export class CartsService {
 
 	// 	const orderItem = this.orderItemRepository.create(item);
 	// 	return orderItem;
-	// }
+	}
 }

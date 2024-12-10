@@ -18,8 +18,8 @@ export class ProductsController {
 	}
 
 	@Get('available')
-	findAllInStock() {
-		return this.productsService.findAllInStock();
+	async findAllInStock() {
+		return await this.productsService.findAllInStock();
 	}
 
 	@Get(':id')

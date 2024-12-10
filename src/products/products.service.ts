@@ -24,11 +24,12 @@ export class ProductsService {
 		}
 	}
 
-	findAllInStock() {
+	async findAllInStock() {
 		try {
-			return this.productRepository.find({
+			const products = await this.productRepository.find({
 				where: { stock: MoreThan(0) }
 			});
+			return products;
 		} catch (error) {
 			throw new HttpException(error.message || 'Internal Server Error.', error.status || 500);
 		}

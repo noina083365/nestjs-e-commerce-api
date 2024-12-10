@@ -25,9 +25,6 @@ export class CartItem {
 	@Column({ type: 'decimal', precision: 10, scale: 2 })
 	price: number; // Price per unit
 
-	@Column({ type: 'decimal', precision: 10, scale: 2 })
-	total_price: number;
-
 	@CreateDateColumn({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP(6)',

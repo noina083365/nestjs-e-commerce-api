@@ -15,3 +15,8 @@ export enum OrderStatus {
 	Delivered = 'Delivered',
 	Cancelled = 'Cancelled',
 }
+
+export enum CartStatus {
+	Open = 'Open',
+	Checkout = 'Checkout',
+}

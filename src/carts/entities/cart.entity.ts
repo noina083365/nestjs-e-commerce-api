@@ -12,10 +12,13 @@ import {
 @Entity('carts')
 export class Cart {
 	@PrimaryGeneratedColumn()
-	cart_id: number;
+	id: number;
 
 	@ManyToOne(() => Customer, { eager: true })
 	customer: Customer; // customer_id
+
+	@Column({ type: 'decimal', precision: 10, scale: 2 })
+	total_price: number;
 
 	@Column({ nullable: false })
 	status: string; // e.g., 'Open', 'Checkout'

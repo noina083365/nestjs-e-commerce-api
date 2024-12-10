@@ -40,15 +40,6 @@ export class CreateCartItemDto {
   @IsPositive()
   price: number;
 
-  @ApiProperty({
-    example: '123.56',
-    description: 'Price per unit',
-  })
-  @IsNotEmpty()
-  @IsNumber()
-  @IsPositive()
-  totalPrice: number;
-
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',

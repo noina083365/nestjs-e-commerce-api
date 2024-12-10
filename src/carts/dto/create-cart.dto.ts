@@ -5,6 +5,7 @@ import {
   IsNumber,
   IsPositive,
 } from 'class-validator';
+import { CartStatus } from 'src/common/interfaces';
 import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 export class CreateCartDto {
@@ -15,7 +16,17 @@ export class CreateCartDto {
   @IsNotEmpty()
   customerId: number;
 
-  // status
+  @ApiProperty({
+    example: '123.56',
+    description: 'Price per unit',
+  })
+  @IsNotEmpty()
+  @IsNumber()
+  @IsPositive()
+  totalPrice: number;
+
+  @ApiProperty({ enum: ['Open', 'Checkout'] })
+  status: CartStatus;
 
   @CreateDateColumn({
     type: 'timestamp',
