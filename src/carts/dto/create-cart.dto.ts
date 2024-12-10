@@ -5,7 +5,7 @@ import {
   IsNumber,
   IsPositive,
 } from 'class-validator';
-import { CartStatus } from 'src/common/interfaces';
+import { CartStatus } from '../../common/interfaces';
 import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 export class CreateCartDto {

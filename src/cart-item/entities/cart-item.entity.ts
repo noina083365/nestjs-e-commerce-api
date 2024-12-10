@@ -11,9 +11,9 @@ import {
 @Entity('cart_items')
 export class CartItem {
 	@PrimaryGeneratedColumn()
-	cart_item_id: number;
+	id: number;
 
-	@ManyToOne(() => Cart, { eager: true })
+	@ManyToOne(() => Cart, (cart) => cart.items, { onDelete: 'CASCADE' })
 	cart: Cart; // cart_id
 
 	@ManyToOne(() => Product, { eager: true })

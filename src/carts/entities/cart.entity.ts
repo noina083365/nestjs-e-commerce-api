@@ -1,3 +1,4 @@
+import { CartItem } from '../../cart-item/entities/cart-item.entity';
 import { Customer } from '../../customers/entities/customer.entity';
 import {
 	Column,
@@ -22,6 +23,9 @@ export class Cart {
 
 	@Column({ nullable: false })
 	status: string; // e.g., 'Open', 'Checkout'
+
+	@OneToMany(() => CartItem, (cartItem) => cartItem.cart, { cascade: true })
+	items: CartItem[];
 
 	@CreateDateColumn({
 		type: 'timestamp',

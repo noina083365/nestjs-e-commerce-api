@@ -4,6 +4,7 @@ import { CartsService } from './carts.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Cart } from './entities/cart.entity';
 import { Repository } from 'typeorm';
+import { CartItem } from '../cart-item/entities/cart-item.entity';
 
 const mockRepository = () => ({
   find: jest.fn(),
@@ -14,7 +15,8 @@ const mockRepository = () => ({
 
 describe('CartsController', () => {
   let controller: CartsController;
-  let productRepository: Repository<Cart>;
+  let cartRepository: Repository<Cart>;
+  let cartItemRepository: Repository<CartItem>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -25,12 +27,19 @@ describe('CartsController', () => {
           provide: getRepositoryToken(Cart),
           useFactory: mockRepository,
         },
+        {
+          provide: getRepositoryToken(CartItem),
+          useFactory: mockRepository,
+        },
       ],
     }).compile();
 
     controller = module.get<CartsController>(CartsController);
-    productRepository = module.get<Repository<Cart>>(
+    cartRepository = module.get<Repository<Cart>>(
       getRepositoryToken(Cart),
+    );
+    cartItemRepository = module.get<Repository<CartItem>>(
+      getRepositoryToken(CartItem),
     );
   });
 

@@ -27,6 +27,7 @@ import { AuthModule } from './auth/auth.module';
 				database: configService.get<string>('DB_DATABASE'),
 				entities: ['dist/**/*.entity{.ts,.js}'],
 				synchronize: true,
+				// logging: ['query', 'schema']
 			}),
 			inject: [ConfigService], // Inject ConfigService to use it in useFactory
 		}),
