@@ -14,7 +14,41 @@ export class CartsService {
 		private readonly cartItemRepository: Repository<CartItem>,
 	) { }
 
-	async customerCart(customerCart: any) {
+	async customerCartOpen(customerId: number) {
+		let itemList: any[] = [];
+		try {
+			const cartOpen = await this.cartRepository.findOne({
+				where: {
+					customer: { id: customerId },
+					status: 'Open'
+				},
+			});
+			if (cartOpen) {
+				const cartItems = await this.cartItemRepository.find({
+					where: {
+						cart: { id: cartOpen.id }
+					},
+					relations: ['product']
+				});
+				itemList = cartItems.map((cItem: CartItem) => {
+					const newItemKey = {
+						id: cItem.product.id,
+						name: cItem.product.name,
+						description: cItem.product.description,
+						price: cItem.product.price,
+						stock: cItem.product.stock,
+						quantity: cItem.quantity,
+					}
+					return newItemKey;
+				});
+			}
+			return itemList;
+		} catch (error) {
+			throw new HttpException(error.message || 'Internal Server Error.', error.status || 500);
+		}
+	}
+
+	async updateCustomerCart(customerCart: any) {
 		const { customerId, cartItems, total_price } = customerCart;
 		try {
 			const openCart = await this.cartRepository.findOne({
@@ -44,7 +78,6 @@ export class CartsService {
 						cart: { id: cartId }
 					}
 				});
-				console.log(rows, count);
 				if (count > 0) {
 					await this.cartItemRepository
 						.createQueryBuilder()

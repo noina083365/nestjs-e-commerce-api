@@ -24,7 +24,7 @@ export class Cart {
 	@Column({ nullable: false })
 	status: string; // e.g., 'Open', 'Checkout'
 
-	@OneToMany(() => CartItem, (cartItem) => cartItem.cart, { cascade: true })
+	@OneToMany(() => CartItem, (cartItem) => cartItem.cart, { onDelete: 'CASCADE' })
 	items: CartItem[];
 
 	@CreateDateColumn({

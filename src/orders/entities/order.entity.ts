@@ -24,7 +24,7 @@ export class Order {
 	@ManyToOne(() => Customer, (customer) => customer.orders, { eager: true })
 	customer: Customer;
 
-	@OneToMany(() => OrderItem, (orderItem) => orderItem.order, { cascade: true })
+	@OneToMany(() => OrderItem, (orderItem) => orderItem.order, { onDelete: 'CASCADE' })
 	items: OrderItem[];
 
 	@CreateDateColumn({

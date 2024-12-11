@@ -12,7 +12,7 @@ export class OrderItem {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@ManyToOne(() => Order, (order) => order.items, { onDelete: 'CASCADE' })
+	@ManyToOne(() => Order, (order) => order.items)
 	order: Order;
 
 	@ManyToOne(() => Product, { eager: true })
