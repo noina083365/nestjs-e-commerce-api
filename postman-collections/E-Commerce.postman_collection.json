@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "4aaae6eb-af53-44d7-8973-f2710c4bd1e4",
+		"name": "E-Commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40235506"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3553/api/products"
+					},
+					"response": []
+				},
+				{
+					"name": "list available",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3553/api/products/available"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Pen\",\r\n    \"description\": \"asdasd\",\r\n    \"price\": 111.00,\r\n    \"stock\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3553/api/products"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "carts",
+			"item": [
+				{
+					"name": "addToCart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": 1,\r\n    \"cartItems\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 1,\r\n            \"price\": \"245.67\"\r\n        }\r\n    ],\r\n    \"total_price\": \"245.67\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3553/api/carts"
+					},
+					"response": []
+				},
+				{
+					"name": "customerOpenCart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3553/api/carts/customer/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login server",
+					"item": [
+						{
+							"name": "customer-login-username",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"user001\",\r\n    \"password\": \"Passw0rd!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3553/api/auth/customer-login"
+							},
+							"response": []
+						},
+						{
+							"name": "customer-login-email",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"user001@gm.com\",\r\n    \"password\": \"Passw0rd!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3553/api/auth/customer-login"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "login next server",
+					"item": [
+						{
+							"name": "customer-login-username",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"user001\",\r\n    \"password\": \"Passw0rd!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/auth/customer-login"
+							},
+							"response": []
+						},
+						{
+							"name": "customer-login-email",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"user001@gm.com\",\r\n    \"password\": \"Passw0rd!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/auth/customer-login"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "customer-register-email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user001@gm.com\",\r\n    \"password\": \"Passw0rd!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3553/api/auth/customer-register"
+					},
+					"response": []
+				},
+				{
+					"name": "customer-register-username",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user001\",\r\n    \"password\": \"Passw0rd!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3553/api/auth/customer-register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customers",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3553/api/customers"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
