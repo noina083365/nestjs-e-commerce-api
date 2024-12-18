@@ -18,7 +18,7 @@ export class Cart {
 	@ManyToOne(() => Customer, { eager: true })
 	customer: Customer; // customer_id
 
-	@Column({ type: 'decimal', precision: 10, scale: 2 })
+	@Column({ type: 'decimal', precision: 10, scale: 2, default: 0.0 })
 	total_price: number;
 
 	@Column({ nullable: false })

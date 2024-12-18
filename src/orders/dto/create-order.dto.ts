@@ -20,14 +20,14 @@ export class CreateOrderDto {
   @IsNotEmpty()
   @IsNumber()
   @IsPositive()
-  totalAmount: number;
+  total_price: number;
 
   @ApiProperty({
     example: '1',
     description: 'Customer ID',
   })
   @IsNotEmpty()
-  customer: number;
+  customerId: number;
 
   @ApiProperty({
     example: '[]',
