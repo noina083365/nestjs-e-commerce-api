@@ -6,7 +6,7 @@ import {
   IsPositive,
 } from 'class-validator';
 import { CartStatus } from '../../common/interfaces';
-import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Column } from 'typeorm';
 
 export class CreateCartDto {
   @ApiProperty({
@@ -28,13 +28,13 @@ export class CreateCartDto {
   @ApiProperty({ enum: ['Open', 'Checkout'] })
   status: CartStatus;
 
-  @CreateDateColumn({
+  @Column({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 
-  @UpdateDateColumn({
+  @Column({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',
     onUpdate: 'CURRENT_TIMESTAMP',

@@ -25,7 +25,7 @@ export class OrderItem {
 	@Column({ type: 'decimal', precision: 10, scale: 2, default: 0.0 })
 	price: number; // Price per unit
 
-	@CreateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 	})

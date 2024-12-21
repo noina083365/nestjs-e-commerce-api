@@ -2,12 +2,10 @@ import { Customer } from '../../customers/entities/customer.entity';
 import { OrderItem } from '../../order-item/entities/order-item.entity';
 import {
 	Column,
-	CreateDateColumn,
 	Entity,
 	ManyToOne,
 	OneToMany,
 	PrimaryGeneratedColumn,
-	UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('orders')
@@ -27,13 +25,13 @@ export class Order {
 	@OneToMany(() => OrderItem, (orderItem) => orderItem.order, { onDelete: 'CASCADE' })
 	items: OrderItem[];
 
-	@CreateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 	})
 	createdAt: Date;
 
-	@UpdateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 		onUpdate: 'CURRENT_TIMESTAMP',

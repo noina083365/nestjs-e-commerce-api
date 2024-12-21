@@ -34,15 +34,22 @@ export class OrderShipment {
 	@Column()
 	trackingNumber: string;
 
-	@CreateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 	})
 	createdAt: Date;
 
-	@CreateDateColumn({
+	@Column({
 		type: 'date',
-		default: () => 'CURRENT_DATE',
+		nullable: true,
 	})
 	estimatedDeliveryDate: Date;
+
+	constructor() {
+		if (!this.estimatedDeliveryDate) {
+			const a = new Date().toISOString().split('T')[0];
+			this.estimatedDeliveryDate = new Date(a); //.toISOString().split('T')[0]; // YYYY-MM-DD format
+		}
+	}
 }

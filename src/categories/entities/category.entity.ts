@@ -2,8 +2,6 @@ import {
 	Entity,
 	Column,
 	PrimaryGeneratedColumn,
-	CreateDateColumn,
-	UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('categories')
@@ -14,13 +12,13 @@ export class Category {
 	@Column()
 	name: string;
 
-	@CreateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 	})
 	createdAt: Date;
 
-	@UpdateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 		onUpdate: 'CURRENT_TIMESTAMP',

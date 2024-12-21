@@ -24,13 +24,13 @@ export class User {
 	@Column({ type: 'enum', enum: UserRole, default: UserRole.Admin })
 	role: UserRole;
 
-	@CreateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 	})
 	createdAt: Date;
 
-	@UpdateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 		onUpdate: 'CURRENT_TIMESTAMP',

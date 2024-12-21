@@ -5,7 +5,7 @@ import {
   IsNumber,
   IsPositive,
 } from 'class-validator';
-import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Column } from 'typeorm';
 
 export class CreateCartItemDto {
   @ApiProperty({
@@ -40,7 +40,7 @@ export class CreateCartItemDto {
   @IsPositive()
   price: number;
 
-  @CreateDateColumn({
+  @Column({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',
   })

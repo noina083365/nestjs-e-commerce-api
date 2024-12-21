@@ -35,13 +35,13 @@ export class Customer {
 	@Column({ type: 'enum', enum: ActiveStatus, default: ActiveStatus.active })
 	status: ActiveStatus;
 
-	@CreateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 	})
 	createdAt: Date;
 
-	@UpdateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 		onUpdate: 'CURRENT_TIMESTAMP',

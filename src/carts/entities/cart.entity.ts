@@ -27,13 +27,13 @@ export class Cart {
 	@OneToMany(() => CartItem, (cartItem) => cartItem.cart, { onDelete: 'CASCADE' })
 	items: CartItem[];
 
-	@CreateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 	})
 	createdAt: Date;
 
-	@UpdateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 		onUpdate: 'CURRENT_TIMESTAMP',

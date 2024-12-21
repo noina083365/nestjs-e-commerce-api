@@ -2,7 +2,6 @@ import { Cart } from '../../carts/entities/cart.entity';
 import { Product } from '../../products/entities/product.entity';
 import {
 	Column,
-	CreateDateColumn,
 	Entity,
 	ManyToOne,
 	PrimaryGeneratedColumn,
@@ -25,7 +24,7 @@ export class CartItem {
 	@Column({ type: 'decimal', precision: 10, scale: 2, default: 0.0 })
 	price: number; // Price per unit
 
-	@CreateDateColumn({
+	@Column({
 		type: 'timestamp',
 		default: () => 'CURRENT_TIMESTAMP',
 	})

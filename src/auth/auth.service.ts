@@ -7,7 +7,7 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { Customer } from '../customers/entities/customer.entity';
 
-const jwtSecret = 'nest-next-e-commerce-2024';
+const jwtSecret = 'nest-e-commerce-2024';
 
 @Injectable()
 export class AuthService {
