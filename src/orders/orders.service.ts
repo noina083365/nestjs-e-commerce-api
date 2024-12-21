@@ -88,13 +88,13 @@ export class OrdersService {
 		}
 	}
 
-	async orderList(customerId: number, status: string = 'Pending') {
+	async orderList(customerId: number, orderStatus: string = 'Pending') {
 		let orderList: any[] = [];
 		try {
 			const orders = await this.orderRepository.find({
 				where: {
 					customer: { id: customerId },
-					status
+					status: orderStatus
 				},
 			});
 			if (orders && orders.length) {
@@ -122,15 +122,15 @@ export class OrdersService {
 		}
 	}
 
-	async updateOrder(id: number, status: string) {
+	async updateOrder(orderId: number, orderStatus: string) {
 		let orderUpdate = null;
 		try {
 			const order = await this.orderRepository.findOne({
-				where: { id }
+				where: { id: orderId }
 			});
 			if (order) {
-				orderUpdate = await this.orderRepository.update(id, {
-					status
+				orderUpdate = await this.orderRepository.update(orderId, {
+					status: orderStatus
 				});
 			}
 			return orderUpdate;

@@ -17,16 +17,16 @@ export class AuthService {
   ) { }
 
   async customerRegister(registerDto: CustomerRegisterDto) {
-    const { username, password } = registerDto;
-    const userByUsername = await this.customerRepository.findOne({ where: { username } });
-    const userByEmail = await this.customerRepository.findOne({ where: { email: username } });
+    const { username: usernameOrEmail, password } = registerDto;
+    const userByUsername = await this.customerRepository.findOne({ where: { username: usernameOrEmail } });
+    const userByEmail = await this.customerRepository.findOne({ where: { email: usernameOrEmail } });
     if (userByUsername || userByEmail) {
       throw new UnauthorizedException('This username already exists.');
     }
     try {
       const hashPassword = await bcrypt.hash(password, 10);
       const newUser = this.customerRepository.create({
-        username,
+        username: usernameOrEmail,
         password: hashPassword,
       });
       return this.customerRepository.save(newUser);
@@ -36,9 +36,9 @@ export class AuthService {
   }
 
   async customerLogin(loginDto: CustomerLoginDto) {
-    const { username, password } = loginDto;
-    const userByUsername = await this.customerRepository.findOne({ where: { username } });
-    const userByEmail = await this.customerRepository.findOne({ where: { email: username } });
+    const { username: usernameOrEmail, password } = loginDto;
+    const userByUsername = await this.customerRepository.findOne({ where: { username: usernameOrEmail } });
+    const userByEmail = await this.customerRepository.findOne({ where: { email: usernameOrEmail } });
 
     if (!userByUsername && !userByEmail) {
       throw new UnauthorizedException('Invalid username or password.');
