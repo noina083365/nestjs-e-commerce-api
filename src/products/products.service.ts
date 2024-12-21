@@ -51,8 +51,12 @@ export class ProductsService {
 		}
 	}
 
-	update(id: number, updateProductDto: UpdateProductDto) {
-		return `This action updates a #${id} product`;
+	async update(id: number, updateProductDto: any) {
+		try {
+			await this.productRepository.update(id, updateProductDto);
+		} catch (error) {
+			throw new HttpException(error.message || 'Internal Server Error.', error.status || 500);
+		}
 	}
 
 	remove(id: number) {
