@@ -27,7 +27,7 @@ export class OrderItem {
 
 	@CreateDateColumn({
 		type: 'timestamp',
-		default: () => 'CURRENT_TIMESTAMP(6)',
+		default: () => 'CURRENT_TIMESTAMP',
 	})
 	createdAt: Date;
 }
