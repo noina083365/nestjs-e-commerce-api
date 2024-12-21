@@ -1,5 +1,5 @@
+import { Customer } from 'src/customers/entities/customer.entity';
 import { Order } from '../../orders/entities/order.entity';
-import { Product } from '../../products/entities/product.entity';
 import {
 	Column,
 	CreateDateColumn,
@@ -8,7 +8,7 @@ import {
 	PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('order_shipments')
+@Entity('order_shipment')
 export class OrderShipment {
 	@PrimaryGeneratedColumn()
 	id: number;
@@ -16,18 +16,33 @@ export class OrderShipment {
 	@ManyToOne(() => Order, (order) => order.items)
 	order: Order; // order_id
 
-	@ManyToOne(() => Product, { eager: true })
-	product: Product; // product_id
+	@ManyToOne(() => Customer, { eager: true })
+	customer: Customer; // customer_id
 
 	@Column()
-	quantity: number;
+	address: string;
 
-	@Column({ type: 'decimal', precision: 10, scale: 2, default: 0.0 })
-	price: number; // Price per unit
+	@Column()
+	shippingCost: number;
+
+	@Column()
+	shippingMethod: string;
+
+	@Column()
+	shipmentStatus: string;
+
+	@Column()
+	trackingNumber: string;
 
 	@CreateDateColumn({
 		type: 'timestamp',
-		default: () => 'CURRENT_TIMESTAMP(6)',
+		default: () => 'CURRENT_TIMESTAMP',
 	})
 	createdAt: Date;
+
+	@CreateDateColumn({
+		type: 'date',
+		default: () => 'CURRENT_DATE',
+	})
+	estimatedDeliveryDate: Date;
 }
